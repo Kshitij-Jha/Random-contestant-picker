@@ -15,6 +15,7 @@ def add(msg):
     random.shuffle(arr)
     separator = ','
     arr = separator.join(arr)
+    #print(type(arr),arr)
     f.write("\n")
     f.write(arr)
     f.write("\n")
