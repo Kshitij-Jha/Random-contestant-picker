@@ -1,3 +1,8 @@
-a,b
-b,a
+Kitty, Cero, Pepper, Achoo
+Achoo, Cero, Pepper,Kitty
+4
+4
+4
+3
 2
+1

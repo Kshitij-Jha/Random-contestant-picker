@@ -50,7 +50,7 @@ async def on_message(message):
 
   if message.content.startswith('!fishie'):
     if str(message.author) == 'BipolarBear#6749' or str(message.author) == 'littlefish#4767':
-      await message.channel.send('@Fishie Bear sends :kissing_heart: ')
+      await message.channel.send('@littlefish#4767 Bear sends :kissing_heart: ')
 
       with open('tenor.gif', 'rb') as f:
         picture = discord.File(f)
@@ -62,6 +62,7 @@ async def on_message(message):
   if message.content.startswith('!contestants'):
     f = open("contestants.txt",'r')
     msg = f.readlines()[0]
+    f.close()
     await message.channel.send(msg)
 
   if message.content.startswith('!add'):
@@ -73,6 +74,7 @@ async def on_message(message):
     new = message.content[5:]
     f = open("contestants.txt",'r')
     msg = f.readlines()[0].strip()
+    f.close()
     msg = msg.split(",")
     if new not in msg:
       msg.append(new)
@@ -96,12 +98,13 @@ async def on_message(message):
     f = open("contestants.txt",'a')
     f.writelines(str(counter) + '\n')
     msg = msg.split(",")
-    print(msg[counter])
+    f.close()
     await message.channel.send(msg[counter])
     if counter == 0:
       f = open('contestants.txt', 'r+')
       msg = f.readlines()[0].strip()
       f.truncate(0)
+      f.close()
       add(msg)
 
 keep_alive()
