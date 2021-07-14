@@ -1,8 +1,3 @@
-Kitty, Cero, Pepper, Achoo
-Achoo, Cero, Pepper,Kitty
-4
-4
-4
-3
-2
-1
+Pepper, Kitty, Cero, Ellie, Seany, Achoo, Bear
+Seany, Ellie, Achoo, Cero, Bear, Kitty,Pepper
+7

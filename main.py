@@ -50,14 +50,17 @@ async def on_message(message):
 
   if message.content.startswith('!fishie'):
     if str(message.author) == 'BipolarBear#6749' or str(message.author) == 'littlefish#4767':
-      await message.channel.send('@littlefish#4767 Bear sends :kissing_heart: ')
-
       with open('tenor.gif', 'rb') as f:
         picture = discord.File(f)
-        await message.channel.send(file=picture)
+      f.close()
+      await message.channel.send('<@!809248682838982687> Bear sends :kissing_heart:', file=picture)
 
   if message.content.startswith('!bear'):
-    await message.channel.send('@Bear Fishie sends :kissing_heart: ')
+    if str(message.author) == 'BipolarBear#6749' or str(message.author) == 'littlefish#4767':   
+      with open('milk-and-mocha-kiss.gif', 'rb') as f:
+        picture = discord.File(f)
+      f.close()
+      await message.channel.send('<@!432162806691921921> Fishie sends :kissing_heart:', file=picture)
 
   if message.content.startswith('!contestants'):
     f = open("contestants.txt",'r')

@@ -1,0 +1,7 @@
+Remove question-answer clashes
+Add @mentions upon picking
+Add (!remove) command
+make less random (check last round choices)
+add (!shuffle)
+add (!shuffle from here)
+Add Fishie stuff
