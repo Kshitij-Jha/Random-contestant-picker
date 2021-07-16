@@ -18,7 +18,7 @@ def add(msg):
   f.write("\n")
   f.write(arr.strip())
   f.write("\n")
-  f.write(counter+"\n")
+  f.write(counter+"\n") 
   f.close()
 
 '''def replace(msg):
@@ -43,7 +43,7 @@ async def on_message(message):
     return
 
   if message.content.startswith('!list'):
-    await message.channel.send('**!list:** List all commands \n**!test:** Check if bot is online \n**!contestants:** Display the list of current contestants  \n**!add:** add contestants make sure separated by commas (need to use this once at the beginning of every round)...until further updates \n**!new:** add a new contestant  \n**!p:** pick random contestant')
+    await message.channel.send('**!list:** List all commands \n**!test:** Check if bot is online \n**!c:** Display the list of current contestants  \n**!add:** add contestants make sure separated by commas (need to use this once at the beginning of every round)...until further updates \n**!new:** add a new contestant  \n**!p:** pick random contestant')
 
   if message.content.startswith('!test'):
     await message.channel.send('Bot online')
@@ -62,7 +62,7 @@ async def on_message(message):
       f.close()
       await message.channel.send('<@!432162806691921921> Fishie sends :kissing_heart:', file=picture)
 
-  if message.content.startswith('!contestants'):
+  if message.content.startswith('!c'):
     f = open("contestants.txt",'r')
     msg = f.readlines()[0]
     f.close()
@@ -96,19 +96,31 @@ async def on_message(message):
     f = open("contestants.txt",'r')
     msg = f.readlines()[1]
     f = open("contestants.txt",'r')
-    counter = int(f.readlines()[-1])
-    counter -= 1
+    org = f.readlines()[0]
+    f = open("contestants.txt",'r')
+    end = int(f.readlines()[-1])
+    end -= 1
     f = open("contestants.txt",'a')
-    f.writelines(str(counter) + '\n')
+    f.writelines(str(end)+ '\n')
     msg = msg.split(",")
+    org = org.split(",")
     f.close()
-    await message.channel.send(msg[counter])
-    if counter == 0:
+    if(msg[end].strip() != org[-(end+1)].strip()):
+      print(end,msg[end],-(end+1), org[-(end+1)])
+      await message.channel.send(msg[end].strip())
+    else:
+      await message.channel.send(msg[end-1].strip())
+      temp = msg[end-1].strip()
+      msg.remove(msg[end-1])
+      msg.append(temp)
+      print(msg)
+    if end == 0:
       f = open('contestants.txt', 'r+')
       msg = f.readlines()[0].strip()
       f.truncate(0)
       f.close()
       add(msg)
+      await message.channel.send("new loop (for Bear's reference) ignore this pls")
 
 keep_alive()
 client.run(my_secret)
